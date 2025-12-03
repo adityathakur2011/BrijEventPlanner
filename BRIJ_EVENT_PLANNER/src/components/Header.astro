@@ -1,16 +1,18 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
+const basePath = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 const currentPath = Astro.url.pathname;
 const navItems = [
-	{ href: "/", label: "Home" },
-	{ href: "/about", label: "About" },
-	{ href: "/services", label: "Services" },
-	{ href: "/portfolio", label: "Portfolio" },
-	{ href: "/contact", label: "Contact" },
+	{ href: basePath, label: "Home" },
+	{ href: `${basePath}about`, label: "About" },
+	{ href: `${basePath}services`, label: "Services" },
+	{ href: `${basePath}portfolio`, label: "Portfolio" },
+	{ href: `${basePath}contact`, label: "Contact" },
 ];
 
 const isActive = (href: string) => {
-	if (href === "/") {
-		return currentPath === "/";
+	if (href === basePath || href === baseUrl || href === `${baseUrl}/`) {
+		return currentPath === basePath || currentPath === baseUrl || currentPath === `${baseUrl}/`;
 	}
 	return currentPath.startsWith(href);
 };
@@ -21,7 +23,7 @@ const isActive = (href: string) => {
 		<div class="flex items-center justify-between h-16 lg:h-20">
 			<!-- Logo -->
 			<a 
-				href="/" 
+				href={basePath}
 				class="flex items-center space-x-2 text-xl lg:text-2xl font-serif font-semibold text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 rounded-md px-2 py-1"
 				aria-label="Brij Event Planner Home"
 			>
