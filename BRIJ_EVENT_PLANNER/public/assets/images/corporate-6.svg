@@ -1,0 +1,6 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#fce7f3"/>
+  <rect x="300" y="200" width="200" height="200" fill="#f9a8d4" opacity="0.6" rx="10"/>
+  <text x="400" y="310" font-family="Arial" font-size="20" fill="#be185d" text-anchor="middle" dominant-baseline="middle">Corporate 6</text>
+</svg>
+

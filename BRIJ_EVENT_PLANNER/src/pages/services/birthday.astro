@@ -1,0 +1,227 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const galleryImages = [
+	{
+		src: "/assets/images/birthday-1.svg",
+		alt: "Colorful children's birthday party with themed decorations",
+	},
+	{
+		src: "/assets/images/birthday-2.svg",
+		alt: "Elegant milestone birthday celebration setup",
+	},
+	{
+		src: "/assets/images/birthday-3.svg",
+		alt: "Fun birthday party with entertainment and activities",
+	},
+	{
+		src: "/assets/images/birthday-4.svg",
+		alt: "Themed birthday party with custom cake display",
+	},
+	{
+		src: "/assets/images/birthday-5.svg",
+		alt: "Outdoor birthday celebration with decorations",
+	},
+	{
+		src: "/assets/images/birthday-6.svg",
+		alt: "Birthday party with photo booth and props",
+	},
+];
+
+const includedServices = [
+	"Party theme consultation and design",
+	"Venue selection and decoration",
+	"Custom decoration and setup",
+	"Entertainment coordination",
+	"Catering and menu planning",
+	"Birthday cake design and coordination",
+	"Activity and game planning",
+	"Photo booth and photography setup",
+	"Invitation design and distribution",
+	"Party favors and gift coordination",
+	"Timeline and schedule management",
+	"On-site party coordination",
+	"Cleanup and post-party support",
+	"Age-appropriate activity planning",
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	"serviceType": "Birthday Party Planning",
+	"provider": {
+		"@type": "Organization",
+		"name": "Brij Event Planner",
+		"url": "https://brijeventplanner.com",
+	},
+	"areaServed": "Worldwide",
+	"description": "Personalized birthday party planning services for children and adults, including themed decorations, entertainment coordination, catering management, and custom activities tailored to the guest of honor.",
+	"offers": {
+		"@type": "Offer",
+		"availability": "https://schema.org/InStock",
+	},
+};
+---
+
+<BaseLayout
+	title="Birthday Party Planning Services - Memorable Celebrations"
+	description="Expert birthday party planning for children and adults. Themed decorations, entertainment coordination, custom activities, and personalized experiences that make every birthday celebration special and memorable."
+	image="/assets/images/birthday-1.svg"
+>
+	<!-- JSON-LD Schema -->
+	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+	<!-- Hero Section -->
+	<section class="relative py-16 lg:py-24 bg-gradient-to-br from-rose-100 to-pink-100 dark:from-slate-800 dark:to-slate-900">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto">
+				<h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-6">
+					Birthday Party Planning
+				</h1>
+				<p class="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
+					Creating magical birthday celebrations that bring joy and create lasting memories
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- SEO Content Section -->
+	<section class="py-12 lg:py-16 bg-white dark:bg-slate-900">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="max-w-4xl mx-auto">
+				<div class="prose prose-lg dark:prose-invert max-w-none">
+					<p class="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+						Birthdays are special milestones that deserve to be celebrated in style, whether it's a child's first birthday party, a teenager's sweet sixteen, or a milestone adult celebration. At Brij Event Planner, we specialize in creating magical birthday celebrations that bring joy, create lasting memories, and perfectly reflect the guest of honor's personality and interests. From themed children's parties with colorful decorations and fun activities to elegant milestone celebrations for adults, we design personalized experiences that make every birthday truly special.
+					</p>
+					<p class="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+						Our birthday party planning services encompass every detail, from initial theme consultation and design to venue selection, custom decorations, entertainment coordination, catering management, and on-site party coordination. We work closely with you to understand the birthday person's preferences, favorite colors, hobbies, and interests, ensuring that every element of the celebration is thoughtfully planned and perfectly executed. Whether you're planning an intimate gathering or a grand celebration, we handle all the logistics so you can focus on enjoying the special day with your loved ones.
+					</p>
+					<p class="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+						For children's birthday parties, we create age-appropriate themed experiences with custom decorations, entertainment, activities, and party favors that delight young guests and create unforgettable memories. Our services include character-themed parties, princess celebrations, superhero adventures, sports-themed parties, and more. For adult birthday celebrations, we design sophisticated and elegant experiences, from milestone birthday galas to intimate dinner parties, with attention to detail that reflects the honoree's style and preferences. We coordinate everything from invitation design and distribution to catering, entertainment, photography, and cleanup, ensuring a seamless and stress-free celebration.
+					</p>
+					<p class="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+						What makes our birthday party planning unique is our ability to create personalized experiences that truly celebrate the guest of honor. We understand that every birthday is different, and we tailor our services to match the age, interests, and preferences of the birthday person. Our attention to detail, creativity, and commitment to excellence ensures that every birthday party we plan is fun, memorable, and perfectly executed. Trust Brij Event Planner to create a birthday celebration that brings smiles, creates joy, and makes the special day truly unforgettable for everyone involved.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- What's Included Section -->
+	<section class="py-16 lg:py-24 bg-rose-50/50 dark:bg-slate-800/50" aria-labelledby="included-heading">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="max-w-4xl mx-auto">
+				<h2 id="included-heading" class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-12 text-center">
+					What's Included
+				</h2>
+				<div class="bg-white dark:bg-slate-900 rounded-2xl p-8 lg:p-12 shadow-lg">
+					<ul class="grid grid-cols-1 md:grid-cols-2 gap-4" role="list">
+						{includedServices.map((service) => (
+							<li class="flex items-start space-x-3" role="listitem">
+								<svg
+									class="w-6 h-6 text-rose-600 dark:text-rose-400 flex-shrink-0 mt-0.5"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M5 13l4 4L19 7"
+									/>
+								</svg>
+								<span class="text-slate-700 dark:text-slate-300 text-base leading-relaxed">
+									{service}
+								</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Gallery Section -->
+	<section class="py-16 lg:py-24 bg-white dark:bg-slate-900" aria-labelledby="gallery-heading">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12 lg:mb-16">
+				<h2 id="gallery-heading" class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-4">
+					Birthday Party Gallery
+				</h2>
+				<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+					See some of our fun and memorable birthday celebrations
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+				{galleryImages.map((image) => (
+					<article class="group relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-200 dark:bg-slate-700">
+						<img
+							src={image.src}
+							alt={image.alt}
+							loading="lazy"
+							width="800"
+							height="600"
+							class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+							decoding="async"
+						/>
+						<!-- Placeholder overlay for missing images -->
+						<div class="absolute inset-0 bg-gradient-to-br from-rose-200 to-pink-300 dark:from-rose-900 dark:to-pink-900 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+							<svg
+								class="w-16 h-16 text-white/50"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+								/>
+							</svg>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-16 lg:py-24 bg-gradient-to-br from-rose-600 to-pink-600 dark:from-rose-800 dark:to-pink-800">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+				Ready to Plan an Unforgettable Birthday?
+			</h2>
+			<p class="text-xl text-rose-50 mb-8 max-w-2xl mx-auto">
+				Let's create a magical birthday celebration that will be remembered for years to come.
+			</p>
+			<a
+				href="/contact"
+				class="inline-block px-8 py-4 bg-white text-rose-600 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-rose-600"
+			>
+				Start Planning Today
+			</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	/* Ensure images don't break layout */
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Focus styles for better accessibility */
+	*:focus-visible {
+		outline: 2px solid rgb(251, 113, 133);
+		outline-offset: 2px;
+	}
+</style>
+

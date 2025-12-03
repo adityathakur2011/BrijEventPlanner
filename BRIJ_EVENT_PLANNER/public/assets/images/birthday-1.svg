@@ -1,0 +1,7 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#fce7f3"/>
+  <circle cx="400" cy="300" r="80" fill="#f9a8d4" opacity="0.6"/>
+  <circle cx="400" cy="300" r="60" fill="#fbcfe8" opacity="0.8"/>
+  <text x="400" y="310" font-family="Arial" font-size="20" fill="#be185d" text-anchor="middle" dominant-baseline="middle">Birthday 1</text>
+</svg>
+

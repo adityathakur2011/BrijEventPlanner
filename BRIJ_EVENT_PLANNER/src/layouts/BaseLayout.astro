@@ -1,0 +1,274 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	canonical?: string;
+	preloadHero?: boolean;
+	heroImage?: string;
+}
+
+const {
+	title,
+	description = "Brij Event Planner - Creating unforgettable moments with elegance and style",
+	image = "/assets/images/og-image.svg",
+	canonical = Astro.url.href,
+	preloadHero = false,
+	heroImage = "/assets/images/hero-bg.svg",
+} = Astro.props;
+
+const siteUrl = Astro.site || "https://brijeventplanner.com";
+const fullImageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
+const heroImageUrl = heroImage.startsWith("http") ? heroImage : `${siteUrl}${heroImage}`;
+
+// JSON-LD Schema Data
+const localBusinessSchema = {
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	"@id": `${siteUrl}#organization`,
+	"name": "Brij Event Planner",
+	"alternateName": "Brij Event Planning",
+	"url": siteUrl,
+	"logo": `${siteUrl}/assets/images/logo.svg`,
+	"image": `${siteUrl}/assets/images/og-image.svg`,
+	"description": "Professional event planning services specializing in weddings, corporate events, and birthday celebrations. Creating unforgettable moments with elegance and style.",
+	"telephone": "+1234567890",
+	"email": "hello@brijeventplanner.com",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "123 Event Planning Street",
+		"addressLocality": "New York",
+		"addressRegion": "NY",
+		"postalCode": "10001",
+		"addressCountry": "US"
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": "40.7589",
+		"longitude": "-73.9851"
+	},
+	"openingHoursSpecification": [
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+			"opens": "09:00",
+			"closes": "18:00"
+		},
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": "Saturday",
+			"opens": "10:00",
+			"closes": "16:00"
+		}
+	],
+	"priceRange": "$$",
+	"areaServed": {
+		"@type": "Country",
+		"name": "United States"
+	},
+	"sameAs": [
+		"https://facebook.com/brijeventplanner",
+		"https://instagram.com/brijeventplanner",
+		"https://twitter.com/brijeventplanner",
+		"https://linkedin.com/company/brijeventplanner",
+		"https://pinterest.com/brijeventplanner"
+	],
+	"hasOfferCatalog": {
+		"@type": "OfferCatalog",
+		"name": "Event Planning Services",
+		"itemListElement": [
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Wedding Planning",
+					"url": `${siteUrl}/services/wedding`
+				}
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Corporate Event Planning",
+					"url": `${siteUrl}/services/corporate`
+				}
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Birthday Party Planning",
+					"url": `${siteUrl}/services/birthday`
+				}
+			}
+		]
+	}
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"@id": `${siteUrl}#website`,
+	"url": siteUrl,
+	"name": "Brij Event Planner",
+	"description": "Professional event planning services for weddings, corporate events, and birthday celebrations",
+	"publisher": {
+		"@id": `${siteUrl}#organization`
+	},
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": {
+			"@type": "EntryPoint",
+			"urlTemplate": `${siteUrl}/search?q={search_term_string}`
+		},
+		"query-input": "required name=search_term_string"
+	},
+	"inLanguage": "en-US"
+};
+
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"@id": `${siteUrl}#organization`,
+	"name": "Brij Event Planner",
+	"url": siteUrl,
+	"logo": `${siteUrl}/assets/images/logo.svg`,
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"telephone": "+1234567890",
+		"contactType": "Customer Service",
+		"email": "hello@brijeventplanner.com",
+		"availableLanguage": ["English"]
+	},
+	"sameAs": [
+		"https://facebook.com/brijeventplanner",
+		"https://instagram.com/brijeventplanner",
+		"https://twitter.com/brijeventplanner",
+		"https://linkedin.com/company/brijeventplanner",
+		"https://pinterest.com/brijeventplanner"
+	]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title} | Brij Event Planner</title>
+		<meta name="title" content={`${title} | Brij Event Planner`} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Brij Event Planner" />
+		<meta name="robots" content="index, follow" />
+		<meta name="language" content="English" />
+		<meta name="revisit-after" content="7 days" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:title" content={`${title} | Brij Event Planner`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={fullImageUrl} />
+		<meta property="og:site_name" content="Brij Event Planner" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonical} />
+		<meta property="twitter:title" content={`${title} | Brij Event Planner`} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={fullImageUrl} />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonical} />
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		
+		<!-- Preload hero image for performance -->
+		{preloadHero && (
+			<link rel="preload" as="image" href={heroImageUrl} fetchpriority="high" />
+		)}
+		
+		<!-- Preconnect for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+		
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+		
+		<!-- Dark Mode Initialization - Must run before body renders -->
+		<script is:inline>
+			(function() {
+				try {
+					const savedTheme = localStorage.getItem('theme');
+					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+					
+					if (theme === 'dark') {
+						document.documentElement.classList.add('dark');
+					} else {
+						document.documentElement.classList.remove('dark');
+					}
+				} catch (e) {
+					// Fallback to light mode if error
+					document.documentElement.classList.remove('dark');
+				}
+			})();
+		</script>
+	</head>
+	<body class="bg-rose-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+		<Header />
+		<main id="main-content" role="main">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+		--font-serif: 'Playfair Display', serif;
+	}
+	
+	html {
+		font-family: var(--font-sans);
+	}
+	
+	body {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	#main-content {
+		flex: 1;
+	}
+	
+	/* Smooth scroll behavior */
+	html {
+		scroll-behavior: smooth;
+	}
+	
+	/* Focus styles for accessibility */
+	*:focus-visible {
+		outline: 2px solid rgb(251, 113, 133);
+		outline-offset: 2px;
+	}
+</style>
+

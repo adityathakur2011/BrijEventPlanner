@@ -1,0 +1,267 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const services = [
+	{
+		title: "Wedding Planning",
+		description: "Transform your dream wedding into reality with our comprehensive wedding planning services. We handle every detail from venue selection and vendor coordination to floral design and timeline management. Whether you envision an intimate garden ceremony or a grand ballroom celebration, our experienced team ensures your special day is flawless, stress-free, and perfectly reflects your unique love story.",
+		href: "/services/wedding",
+		icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+		image: "/assets/images/service-wedding.svg",
+	},
+	{
+		title: "Corporate Events",
+		description: "Elevate your business gatherings with professional corporate event management services. We specialize in conferences, seminars, product launches, team building activities, and corporate galas. Our team manages logistics, coordinates vendors, handles technical requirements, and ensures seamless execution that reflects your company's brand and values while creating memorable experiences for attendees.",
+		href: "/services/corporate",
+		icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+		image: "/assets/images/service-corporate.svg",
+	},
+	{
+		title: "Birthday Parties",
+		description: "Create magical birthday celebrations that bring joy and create lasting memories. From children's themed parties to milestone adult celebrations, we design personalized experiences with custom decorations, entertainment coordination, catering management, and themed activities. Our attention to detail ensures every birthday party is special, fun, and perfectly tailored to the guest of honor's personality and preferences.",
+		href: "/services/birthday",
+		icon: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z",
+		image: "/assets/images/service-birthday.svg",
+	},
+];
+---
+
+<BaseLayout
+	title="Our Services - Wedding, Corporate & Birthday Event Planning"
+	description="Comprehensive event planning services for weddings, corporate events, and birthday celebrations. Expert coordination, personalized service, and flawless execution for your special occasions."
+	image="/assets/images/services-hero.svg"
+>
+	<!-- Hero Section -->
+	<section class="relative py-16 lg:py-24 bg-gradient-to-br from-rose-100 to-pink-100 dark:from-slate-800 dark:to-slate-900">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto">
+				<h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-6">
+					Our Services
+				</h1>
+				<p class="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
+					Comprehensive event planning solutions tailored to make your special moments truly unforgettable
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Services Grid Section -->
+	<section class="py-16 lg:py-24 bg-white dark:bg-slate-900" aria-labelledby="services-grid-heading">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12 lg:mb-16">
+				<h2 id="services-grid-heading" class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-4">
+					What We Offer
+				</h2>
+				<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+					From intimate celebrations to grand affairs, we provide expert planning services for every occasion
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+				{services.map((service) => (
+					<article class="group bg-rose-50 dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+						<!-- Service Image -->
+						<div class="relative h-48 sm:h-56 overflow-hidden bg-slate-200 dark:bg-slate-700">
+							<img
+								src={service.image}
+								alt={`${service.title} service showcase`}
+								width="800"
+								height="600"
+								class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+								loading="lazy"
+								decoding="async"
+							/>
+							<!-- Placeholder overlay for missing images -->
+							<div class="absolute inset-0 bg-gradient-to-br from-rose-200 to-pink-300 dark:from-rose-900 dark:to-pink-900 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+								<svg
+									class="w-20 h-20 text-white/50"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+									/>
+								</svg>
+							</div>
+						</div>
+
+						<!-- Service Content -->
+						<div class="p-6 lg:p-8">
+							<!-- Icon -->
+							<div class="w-14 h-14 bg-rose-100 dark:bg-rose-900/30 rounded-xl flex items-center justify-center mb-4 group-hover:bg-rose-200 dark:group-hover:bg-rose-900/50 transition-colors duration-300">
+								<svg
+									class="w-7 h-7 text-rose-600 dark:text-rose-400"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon} />
+								</svg>
+							</div>
+
+							<!-- Title -->
+							<h3 class="text-2xl font-serif font-semibold text-slate-900 dark:text-slate-100 mb-4 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors duration-200">
+								{service.title}
+							</h3>
+
+							<!-- Description -->
+							<p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+								{service.description}
+							</p>
+
+							<!-- View Details Button -->
+							<a
+								href={service.href}
+								class="inline-flex items-center justify-center w-full px-6 py-3 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2"
+							>
+								View Details
+								<svg
+									class="w-5 h-5 ml-2"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+								</svg>
+							</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Additional Info Section -->
+	<section class="py-16 lg:py-24 bg-rose-50/50 dark:bg-slate-800/50">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="max-w-4xl mx-auto text-center">
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-6">
+					Why Choose Our Services?
+				</h2>
+				<p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
+					With years of experience and a passion for creating exceptional events, we bring expertise, creativity, and meticulous attention to detail to every project. Our comprehensive approach ensures that every aspect of your event is carefully planned and flawlessly executed.
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-12">
+					<div class="text-center">
+						<div class="w-16 h-16 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg
+								class="w-8 h-8 text-rose-600 dark:text-rose-400"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-serif font-semibold text-slate-900 dark:text-slate-100 mb-2">
+							Expert Planning
+						</h3>
+						<p class="text-slate-600 dark:text-slate-400">
+							Years of experience in event coordination
+						</p>
+					</div>
+					<div class="text-center">
+						<div class="w-16 h-16 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg
+								class="w-8 h-8 text-rose-600 dark:text-rose-400"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+								/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-serif font-semibold text-slate-900 dark:text-slate-100 mb-2">
+							Personalized Service
+						</h3>
+						<p class="text-slate-600 dark:text-slate-400">
+							Tailored to your unique vision and needs
+						</p>
+					</div>
+					<div class="text-center">
+						<div class="w-16 h-16 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+							<svg
+								class="w-8 h-8 text-rose-600 dark:text-rose-400"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-serif font-semibold text-slate-900 dark:text-slate-100 mb-2">
+							Stress-Free Experience
+						</h3>
+						<p class="text-slate-600 dark:text-slate-400">
+							We handle everything so you can enjoy
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-16 lg:py-24 bg-gradient-to-br from-rose-600 to-pink-600 dark:from-rose-800 dark:to-pink-800">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+				Ready to Get Started?
+			</h2>
+			<p class="text-xl text-rose-50 mb-8 max-w-2xl mx-auto">
+				Let's discuss your event and create something extraordinary together
+			</p>
+			<a
+				href="/contact"
+				class="inline-block px-8 py-4 bg-white text-rose-600 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-rose-600"
+			>
+				Contact Us Today
+			</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	/* Ensure images don't break layout */
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Focus styles for better accessibility */
+	*:focus-visible {
+		outline: 2px solid rgb(251, 113, 133);
+		outline-offset: 2px;
+	}
+</style>
+

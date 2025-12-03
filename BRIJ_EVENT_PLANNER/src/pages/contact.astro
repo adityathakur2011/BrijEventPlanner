@@ -1,0 +1,503 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Static Forms API Key - Replace with your actual API key from https://www.staticforms.xyz/
+// Get your free API key at: https://www.staticforms.xyz/register
+const STATIC_FORMS_API_KEY = "YOUR_STATIC_FORMS_API_KEY";
+
+// WhatsApp number (format: country code + number without + or spaces)
+// Example: 1234567890 for +1 (234) 567-890
+const WHATSAPP_NUMBER = "1234567890";
+const WHATSAPP_MESSAGE = "Hello! I'm interested in your event planning services.";
+
+// Google Maps embed placeholder - Replace with your actual location
+const GOOGLE_MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1841321915747!2d-73.98811768459398!3d40.75889597932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus";
+---
+
+<BaseLayout
+	title="Contact Us - Get in Touch for Your Event Planning Needs"
+	description="Contact Brij Event Planner for expert event planning services. Reach out via our contact form, WhatsApp, or visit our office. We're here to help make your event perfect."
+	image="/assets/images/contact-hero.svg"
+>
+	<!-- Hero Section -->
+	<section class="relative py-16 lg:py-24 bg-gradient-to-br from-rose-100 to-pink-100 dark:from-slate-800 dark:to-slate-900">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto">
+				<h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-6">
+					Contact Us
+				</h1>
+				<p class="text-lg sm:text-xl text-slate-700 dark:text-slate-300 leading-relaxed">
+					Let's discuss your event and create something extraordinary together
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section class="py-16 lg:py-24 bg-white dark:bg-slate-900">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+				<!-- Contact Form -->
+				<div>
+					<h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-6">
+						Send Us a Message
+					</h2>
+					<p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
+						Fill out the form below and we'll get back to you as soon as possible.
+					</p>
+
+					<form
+						id="contact-form"
+						action="https://api.staticforms.xyz/submit"
+						method="POST"
+						class="space-y-6"
+						novalidate
+					>
+						<!-- Static Forms API Key (hidden) -->
+						<input type="hidden" name="accessKey" value={STATIC_FORMS_API_KEY} />
+						
+						<!-- Subject (hidden) -->
+						<input type="hidden" name="subject" value="New Contact Form Submission from Brij Event Planner Website" />
+						
+						<!-- Reply To Email -->
+						<input type="hidden" name="replyTo" value="@email" />
+
+						<!-- Honeypot field for spam protection -->
+						<input type="text" name="name" style="display: none;" tabindex="-1" autocomplete="off" />
+
+						<!-- Name Field -->
+						<div>
+							<label for="name" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+								Full Name <span class="text-rose-600 dark:text-rose-400">*</span>
+							</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								required
+								class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-colors duration-200"
+								placeholder="John Doe"
+								aria-required="true"
+								aria-invalid="false"
+							/>
+							<span class="error-message text-sm text-rose-600 dark:text-rose-400 mt-1 hidden" id="name-error"></span>
+						</div>
+
+						<!-- Email Field -->
+						<div>
+							<label for="email" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+								Email Address <span class="text-rose-600 dark:text-rose-400">*</span>
+							</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+								class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-colors duration-200"
+								placeholder="john@example.com"
+								aria-required="true"
+								aria-invalid="false"
+							/>
+							<span class="error-message text-sm text-rose-600 dark:text-rose-400 mt-1 hidden" id="email-error"></span>
+						</div>
+
+						<!-- Phone Field -->
+						<div>
+							<label for="phone" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+								Phone Number
+							</label>
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-colors duration-200"
+								placeholder="+1 (234) 567-890"
+								aria-invalid="false"
+							/>
+							<span class="error-message text-sm text-rose-600 dark:text-rose-400 mt-1 hidden" id="phone-error"></span>
+						</div>
+
+						<!-- Message Field -->
+						<div>
+							<label for="message" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+								Message <span class="text-rose-600 dark:text-rose-400">*</span>
+							</label>
+							<textarea
+								id="message"
+								name="message"
+								rows="6"
+								required
+								class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-colors duration-200 resize-none"
+								placeholder="Tell us about your event..."
+								aria-required="true"
+								aria-invalid="false"
+							></textarea>
+							<span class="error-message text-sm text-rose-600 dark:text-rose-400 mt-1 hidden" id="message-error"></span>
+						</div>
+
+						<!-- Submit Button -->
+						<button
+							type="submit"
+							id="submit-btn"
+							class="w-full px-8 py-4 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+						>
+							<span id="submit-text">Send Message</span>
+							<span id="submit-loading" class="hidden">Sending...</span>
+						</button>
+
+						<!-- Success Message -->
+						<div id="success-message" class="hidden p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg" role="alert" aria-live="polite">
+							<p class="text-green-800 dark:text-green-300">
+								<strong>Thank you!</strong> Your message has been sent successfully. We'll get back to you soon.
+							</p>
+						</div>
+
+						<!-- Error Message -->
+						<div id="error-message" class="hidden p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg" role="alert" aria-live="assertive">
+							<p class="text-red-800 dark:text-red-300">
+								<strong>Oops!</strong> Something went wrong. Please try again or contact us directly.
+							</p>
+						</div>
+					</form>
+				</div>
+
+				<!-- Contact Information & Map -->
+				<div class="space-y-8">
+					<!-- Contact Info -->
+					<div>
+						<h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-6">
+							Get in Touch
+						</h2>
+						<div class="space-y-6">
+							<!-- Email -->
+							<div class="flex items-start space-x-4">
+								<div class="flex-shrink-0 w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-lg flex items-center justify-center">
+									<svg
+										class="w-6 h-6 text-rose-600 dark:text-rose-400"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg"
+										aria-hidden="true"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+										/>
+									</svg>
+								</div>
+								<div>
+									<h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">Email</h3>
+									<a
+										href="mailto:hello@brijeventplanner.com"
+										class="text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors duration-200"
+									>
+										hello@brijeventplanner.com
+									</a>
+								</div>
+							</div>
+
+							<!-- Phone -->
+							<div class="flex items-start space-x-4">
+								<div class="flex-shrink-0 w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-lg flex items-center justify-center">
+									<svg
+										class="w-6 h-6 text-rose-600 dark:text-rose-400"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg"
+										aria-hidden="true"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+										/>
+									</svg>
+								</div>
+								<div>
+									<h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">Phone</h3>
+									<a
+										href="tel:+1234567890"
+										class="text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors duration-200"
+									>
+										+1 (234) 567-890
+									</a>
+								</div>
+							</div>
+
+							<!-- WhatsApp Button -->
+							<div>
+								<a
+									href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex items-center justify-center w-full px-6 py-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2"
+								>
+									<svg
+										class="w-6 h-6 mr-3"
+										fill="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg"
+										aria-hidden="true"
+									>
+										<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+									</svg>
+									Chat on WhatsApp
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Business Hours -->
+					<div>
+						<h3 class="text-xl font-serif font-semibold text-slate-900 dark:text-slate-100 mb-4">
+							Business Hours
+						</h3>
+						<dl class="space-y-2 text-slate-600 dark:text-slate-400">
+							<div class="flex justify-between">
+								<dt class="font-medium">Monday - Friday</dt>
+								<dd>9:00 AM - 6:00 PM</dd>
+							</div>
+							<div class="flex justify-between">
+								<dt class="font-medium">Saturday</dt>
+								<dd>10:00 AM - 4:00 PM</dd>
+							</div>
+							<div class="flex justify-between">
+								<dt class="font-medium">Sunday</dt>
+								<dd>Closed</dd>
+							</div>
+						</dl>
+					</div>
+
+					<!-- Google Maps Embed -->
+					<div>
+						<h3 class="text-xl font-serif font-semibold text-slate-900 dark:text-slate-100 mb-4">
+							Find Us
+						</h3>
+						<div class="rounded-lg overflow-hidden shadow-lg">
+							<iframe
+								src={GOOGLE_MAPS_EMBED_URL}
+								width="100%"
+								height="300"
+								style="border:0;"
+								allowfullscreen=""
+								loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade"
+								title="Brij Event Planner Location"
+								class="w-full"
+							></iframe>
+						</div>
+						<p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+							Visit our office or contact us for directions
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	// Form Validation and Submission
+	(function () {
+		const form = document.getElementById('contact-form');
+		const submitBtn = document.getElementById('submit-btn');
+		const submitText = document.getElementById('submit-text');
+		const submitLoading = document.getElementById('submit-loading');
+		const successMessage = document.getElementById('success-message');
+		const errorMessage = document.getElementById('error-message');
+
+		// Validation rules
+		const validators = {
+			name: {
+				required: true,
+				minLength: 2,
+				pattern: /^[a-zA-Z\s'-]+$/,
+				message: 'Please enter a valid name (at least 2 characters, letters only)',
+			},
+			email: {
+				required: true,
+				pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+				message: 'Please enter a valid email address',
+			},
+			phone: {
+				required: false,
+				pattern: /^[\d\s\-\+\(\)]+$/,
+				message: 'Please enter a valid phone number',
+			},
+			message: {
+				required: true,
+				minLength: 10,
+				message: 'Please enter a message (at least 10 characters)',
+			},
+		};
+
+		// Validate individual field
+		function validateField(field) {
+			const fieldName = field.name;
+			const value = field.value.trim();
+			const validator = validators[fieldName];
+			const errorElement = document.getElementById(`${fieldName}-error`);
+
+			if (!validator) return true;
+
+			// Check required
+			if (validator.required && !value) {
+				showError(field, errorElement, 'This field is required');
+				return false;
+			}
+
+			// Skip validation if field is empty and not required
+			if (!value && !validator.required) {
+				clearError(field, errorElement);
+				return true;
+			}
+
+			// Check min length
+			if (validator.minLength && value.length < validator.minLength) {
+				showError(field, errorElement, validator.message);
+				return false;
+			}
+
+			// Check pattern
+			if (validator.pattern && !validator.pattern.test(value)) {
+				showError(field, errorElement, validator.message);
+				return false;
+			}
+
+			clearError(field, errorElement);
+			return true;
+		}
+
+		// Show error
+		function showError(field, errorElement, message) {
+			field.setAttribute('aria-invalid', 'true');
+			field.classList.add('border-rose-500', 'dark:border-rose-500');
+			field.classList.remove('border-slate-300', 'dark:border-slate-700');
+			if (errorElement) {
+				errorElement.textContent = message;
+				errorElement.classList.remove('hidden');
+			}
+		}
+
+		// Clear error
+		function clearError(field, errorElement) {
+			field.setAttribute('aria-invalid', 'false');
+			field.classList.remove('border-rose-500', 'dark:border-rose-500');
+			field.classList.add('border-slate-300', 'dark:border-slate-700');
+			if (errorElement) {
+				errorElement.classList.add('hidden');
+			}
+		}
+
+		// Validate all fields
+		function validateForm() {
+			let isValid = true;
+			const fields = form.querySelectorAll('input[required], textarea[required], input[type="tel"]');
+
+			fields.forEach((field) => {
+				if (!validateField(field)) {
+					isValid = false;
+				}
+			});
+
+			return isValid;
+		}
+
+		// Real-time validation
+		const fields = form.querySelectorAll('input, textarea');
+		fields.forEach((field) => {
+			field.addEventListener('blur', () => validateField(field));
+			field.addEventListener('input', () => {
+				if (field.hasAttribute('aria-invalid') && field.getAttribute('aria-invalid') === 'true') {
+					validateField(field);
+				}
+			});
+		});
+
+		// Form submission
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			// Hide previous messages
+			successMessage?.classList.add('hidden');
+			errorMessage?.classList.add('hidden');
+
+			// Validate form
+			if (!validateForm()) {
+				errorMessage?.classList.remove('hidden');
+				return;
+			}
+
+			// Disable submit button
+			submitBtn.disabled = true;
+			submitText.classList.add('hidden');
+			submitLoading.classList.remove('hidden');
+
+			try {
+				// Submit to Static Forms
+				const formData = new FormData(form);
+				const response = await fetch(form.action, {
+					method: 'POST',
+					body: formData,
+				});
+
+				if (response.ok) {
+					// Success
+					form.reset();
+					successMessage?.classList.remove('hidden');
+					
+					// Scroll to success message
+					successMessage?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+				} else {
+					throw new Error('Form submission failed');
+				}
+			} catch (error) {
+				// Error
+				errorMessage?.classList.remove('hidden');
+				console.error('Form submission error:', error);
+			} finally {
+				// Re-enable submit button
+				submitBtn.disabled = false;
+				submitText.classList.remove('hidden');
+				submitLoading.classList.add('hidden');
+			}
+		});
+	})();
+</script>
+
+<style>
+	/* Ensure form elements are properly styled */
+	input:invalid:not(:focus):not(:placeholder-shown),
+	textarea:invalid:not(:focus):not(:placeholder-shown) {
+		border-color: rgb(239, 68, 68);
+	}
+
+	/* Focus styles for better accessibility */
+	*:focus-visible {
+		outline: 2px solid rgb(251, 113, 133);
+		outline-offset: 2px;
+	}
+
+	/* Smooth transitions */
+	.error-message {
+		display: block;
+		animation: fadeIn 0.3s ease-in;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(-5px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
+

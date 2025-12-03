@@ -1,0 +1,265 @@
+---
+const currentPath = Astro.url.pathname;
+const navItems = [
+	{ href: "/", label: "Home" },
+	{ href: "/about", label: "About" },
+	{ href: "/services", label: "Services" },
+	{ href: "/portfolio", label: "Portfolio" },
+	{ href: "/contact", label: "Contact" },
+];
+
+const isActive = (href: string) => {
+	if (href === "/") {
+		return currentPath === "/";
+	}
+	return currentPath.startsWith(href);
+};
+---
+
+<header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-rose-100 dark:border-slate-800 shadow-sm transition-colors duration-300">
+	<nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+		<div class="flex items-center justify-between h-16 lg:h-20">
+			<!-- Logo -->
+			<a 
+				href="/" 
+				class="flex items-center space-x-2 text-xl lg:text-2xl font-serif font-semibold text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 rounded-md px-2 py-1"
+				aria-label="Brij Event Planner Home"
+			>
+				<span>Brij Event Planner</span>
+			</a>
+
+			<!-- Desktop Navigation -->
+			<ul class="hidden md:flex items-center space-x-1 lg:space-x-2" role="list">
+				{navItems.map((item) => (
+					<li role="listitem">
+						<a
+							href={item.href}
+							class={`px-4 py-2 rounded-lg text-sm lg:text-base font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 ${
+								isActive(item.href)
+									? "bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300"
+									: "text-slate-700 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400"
+							}`}
+							aria-current={isActive(item.href) ? "page" : undefined}
+						>
+							{item.label}
+						</a>
+					</li>
+				))}
+			</ul>
+
+			<!-- Dark Mode Toggle & Mobile Menu Button -->
+			<div class="flex items-center space-x-3">
+				<!-- Dark Mode Toggle -->
+				<button
+					id="theme-toggle"
+					type="button"
+					class="p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2"
+					aria-label="Toggle dark mode"
+				>
+					<!-- Sun Icon (shown in dark mode) -->
+					<svg
+						id="sun-icon"
+						class="w-5 h-5 hidden"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+						/>
+					</svg>
+					<!-- Moon Icon (shown in light mode) -->
+					<svg
+						id="moon-icon"
+						class="w-5 h-5 block"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+						/>
+					</svg>
+				</button>
+
+				<!-- Mobile Menu Button -->
+				<button
+					id="mobile-menu-button"
+					type="button"
+					class="md:hidden p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2"
+					aria-label="Toggle mobile menu"
+					aria-expanded="false"
+					aria-controls="mobile-menu"
+				>
+					<!-- Hamburger Icon -->
+					<svg
+						id="hamburger-icon"
+						class="w-6 h-6 block"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16"
+						/>
+					</svg>
+					<!-- Close Icon -->
+					<svg
+						id="close-icon"
+						class="w-6 h-6 hidden"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M6 18L18 6M6 6l12 12"
+						/>
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<!-- Mobile Navigation Menu -->
+		<div
+			id="mobile-menu"
+			class="hidden md:hidden pb-4 border-t border-rose-100 dark:border-slate-800 mt-2 pt-4"
+			role="navigation"
+			aria-label="Mobile navigation"
+		>
+			<ul class="flex flex-col space-y-2" role="list">
+				{navItems.map((item) => (
+					<li role="listitem">
+						<a
+							href={item.href}
+							class={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 ${
+								isActive(item.href)
+									? "bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300"
+									: "text-slate-700 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-rose-400"
+							}`}
+							aria-current={isActive(item.href) ? "page" : undefined}
+						>
+							{item.label}
+						</a>
+					</li>
+				))}
+			</ul>
+		</div>
+	</nav>
+</header>
+
+<script>
+	// Optimized mobile menu and dark mode toggle
+	(function() {
+		'use strict';
+		
+		// Wait for DOM to be ready
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', init);
+		} else {
+			init();
+		}
+		
+		function init() {
+			// Mobile menu toggle
+			const mb = document.getElementById('mobile-menu-button');
+			const mm = document.getElementById('mobile-menu');
+			const hi = document.getElementById('hamburger-icon');
+			const ci = document.getElementById('close-icon');
+			
+			if (mb && mm && hi && ci) {
+				const toggleMenu = () => {
+					const expanded = mb.getAttribute('aria-expanded') === 'true';
+					mm.classList.toggle('hidden');
+					hi.classList.toggle('hidden');
+					hi.classList.toggle('block');
+					ci.classList.toggle('hidden');
+					ci.classList.toggle('block');
+					mb.setAttribute('aria-expanded', (!expanded).toString());
+				};
+				
+				mb.addEventListener('click', toggleMenu);
+				
+				// Close menu on link click
+				mm.querySelectorAll('a').forEach(link => {
+					link.addEventListener('click', () => {
+						mm.classList.add('hidden');
+						hi.classList.remove('hidden');
+						hi.classList.add('block');
+						ci.classList.add('hidden');
+						ci.classList.remove('block');
+						mb.setAttribute('aria-expanded', 'false');
+					});
+				});
+			}
+			
+			// Dark mode toggle
+			const tt = document.getElementById('theme-toggle');
+			const sunIcon = document.getElementById('sun-icon');
+			const moonIcon = document.getElementById('moon-icon');
+			
+			const updateThemeIcons = (isDark) => {
+				if (sunIcon && moonIcon) {
+					if (isDark) {
+						sunIcon.classList.remove('hidden');
+						sunIcon.classList.add('block');
+						moonIcon.classList.remove('block');
+						moonIcon.classList.add('hidden');
+					} else {
+						sunIcon.classList.remove('block');
+						sunIcon.classList.add('hidden');
+						moonIcon.classList.remove('hidden');
+						moonIcon.classList.add('block');
+					}
+				}
+			};
+			
+			if (tt) {
+				// Set initial icon state based on current theme
+				const html = document.documentElement;
+				const isDark = html.classList.contains('dark');
+				updateThemeIcons(isDark);
+				
+				tt.addEventListener('click', (e) => {
+					e.preventDefault();
+					const html = document.documentElement;
+					const isDark = html.classList.contains('dark');
+					
+					try {
+						if (isDark) {
+							html.classList.remove('dark');
+							localStorage.setItem('theme', 'light');
+							updateThemeIcons(false);
+						} else {
+							html.classList.add('dark');
+							localStorage.setItem('theme', 'dark');
+							updateThemeIcons(true);
+						}
+					} catch (err) {
+						console.error('Theme toggle error:', err);
+					}
+				});
+			}
+		}
+	})();
+</script>
+

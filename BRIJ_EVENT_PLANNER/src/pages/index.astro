@@ -1,0 +1,446 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const services = [
+	{
+		title: "Wedding Planning",
+		description: "Create your perfect day with our comprehensive wedding planning services. From intimate ceremonies to grand celebrations.",
+		href: "/services/wedding",
+		icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+	},
+	{
+		title: "Corporate Events",
+		description: "Professional event management for conferences, seminars, team building, and corporate gatherings.",
+		href: "/services/corporate",
+		icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+	},
+	{
+		title: "Birthday Parties",
+		description: "Memorable birthday celebrations tailored to your vision. Fun, creativity, and attention to every detail.",
+		href: "/services/birthday",
+		icon: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z",
+	},
+];
+
+const portfolioImages = [
+	{
+		src: "/assets/images/portfolio-1.svg",
+		alt: "Elegant wedding ceremony with floral arrangements",
+	},
+	{
+		src: "/assets/images/portfolio-2.svg",
+		alt: "Corporate conference event setup",
+	},
+	{
+		src: "/assets/images/portfolio-3.svg",
+		alt: "Colorful birthday party celebration",
+	},
+	{
+		src: "/assets/images/portfolio-4.svg",
+		alt: "Outdoor wedding reception with beautiful decorations",
+	},
+	{
+		src: "/assets/images/portfolio-5.svg",
+		alt: "Professional corporate networking event",
+	},
+	{
+		src: "/assets/images/portfolio-6.svg",
+		alt: "Themed birthday party with custom decorations",
+	},
+];
+
+const testimonials = [
+	{
+		name: "Sarah Johnson",
+		role: "Bride",
+		content: "Brij Event Planner made our wedding absolutely perfect. Every detail was handled with care, and we couldn't have asked for a more beautiful day. Highly recommend!",
+		rating: 5,
+	},
+	{
+		name: "Michael Chen",
+		role: "Corporate Manager",
+		content: "Their team organized our annual conference flawlessly. Professional, efficient, and attentive to all our needs. The event was a huge success!",
+		rating: 5,
+	},
+	{
+		name: "Emily Rodriguez",
+		role: "Parent",
+		content: "My daughter's 10th birthday party was magical! The team created an amazing themed celebration that all the kids loved. Worth every penny!",
+		rating: 5,
+	},
+	{
+		name: "David Thompson",
+		role: "Groom",
+		content: "From planning to execution, everything was seamless. The attention to detail and creativity exceeded our expectations. Thank you for making our day special!",
+		rating: 5,
+	},
+];
+---
+
+<BaseLayout
+	title="Premium Event Planning Services"
+	description="Brij Event Planner creates unforgettable moments with elegance and style. Expert wedding planning, corporate events, and birthday celebrations. Book your dream event today."
+	image="https://png.pngtree.com/background/20250314/original/pngtree-vibrant-traditional-indian-wedding-ceremony-decorated-with-flowers-and-artifacts-picture-image_16319627.jpg"
+	preloadHero={true}
+	heroImage="https://png.pngtree.com/background/20250314/original/pngtree-vibrant-traditional-indian-wedding-ceremony-decorated-with-flowers-and-artifacts-picture-image_16319627.jpg"
+>
+	<!-- Hero Section -->
+	<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+		<!-- Background Image -->
+		<div class="absolute inset-0 z-0">
+			<img
+				src="https://png.pngtree.com/background/20250314/original/pngtree-vibrant-traditional-indian-wedding-ceremony-decorated-with-flowers-and-artifacts-picture-image_16319627.jpg"
+				alt="Vibrant traditional Indian wedding ceremony decorated with flowers and artifacts"
+				class="w-full h-full object-cover"
+				loading="eager"
+				fetchpriority="high"
+				width="1920"
+				height="1080"
+			/>
+			<!-- Overlay -->
+			<div class="absolute inset-0 bg-gradient-to-b from-rose-900/70 via-rose-800/60 to-slate-900/80 dark:from-slate-900/85 dark:via-slate-900/75 dark:to-slate-900/95"></div>
+		</div>
+
+		<!-- Hero Content -->
+		<div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+				Creating Unforgettable
+				<span class="block text-rose-200">Moments</span>
+			</h1>
+			<p class="text-lg sm:text-xl md:text-2xl text-rose-50 mb-8 max-w-3xl mx-auto leading-relaxed">
+				Your dream event, perfectly planned. From intimate celebrations to grand affairs, we bring your vision to life with elegance and style.
+			</p>
+			<a
+				href="/contact"
+				class="inline-block px-8 py-4 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 focus:ring-offset-transparent"
+			>
+				Book Your Event
+			</a>
+		</div>
+	</section>
+
+	<!-- Services Preview Section -->
+	<section class="py-16 lg:py-24 bg-white dark:bg-slate-900" aria-labelledby="services-heading">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12 lg:mb-16">
+				<h2 id="services-heading" class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-4">
+					Our Services
+				</h2>
+				<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+					Comprehensive event planning services tailored to make your special moments truly memorable
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+				{services.map((service) => (
+					<article class="group bg-rose-50 dark:bg-slate-800 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+						<a href={service.href} class="block focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 rounded-xl">
+							<div class="w-16 h-16 bg-rose-100 dark:bg-rose-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rose-200 dark:group-hover:bg-rose-900/50 transition-colors duration-300">
+								<svg
+									class="w-8 h-8 text-rose-600 dark:text-rose-400"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon} />
+								</svg>
+							</div>
+							<h3 class="text-xl font-serif font-semibold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors duration-200">
+								{service.title}
+							</h3>
+							<p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+								{service.description}
+							</p>
+							<span class="inline-flex items-center text-rose-600 dark:text-rose-400 font-medium group-hover:translate-x-2 transition-transform duration-200">
+								Learn more
+								<svg
+									class="w-5 h-5 ml-2"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+								</svg>
+							</span>
+						</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Portfolio Preview Section -->
+	<section class="py-16 lg:py-24 bg-rose-50/50 dark:bg-slate-800/50" aria-labelledby="portfolio-heading">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12 lg:mb-16">
+				<h2 id="portfolio-heading" class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-4">
+					Our Portfolio
+				</h2>
+				<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+					Take a glimpse at some of our beautifully executed events
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+				{portfolioImages.map((image) => (
+					<article class="group relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-200 dark:bg-slate-700">
+						<img
+							src={image.src}
+							alt={image.alt}
+							loading="lazy"
+							width="800"
+							height="600"
+							class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+							decoding="async"
+						/>
+						<!-- Placeholder for missing images -->
+						<div class="absolute inset-0 bg-gradient-to-br from-rose-200 to-pink-300 dark:from-rose-900 dark:to-pink-900 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+							<svg
+								class="w-16 h-16 text-white/50"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+								/>
+							</svg>
+						</div>
+					</article>
+				))}
+			</div>
+
+			<div class="text-center mt-12">
+				<a
+					href="/portfolio"
+					class="inline-block px-8 py-4 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2"
+				>
+					View Full Portfolio
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Testimonials Section -->
+	<section class="py-16 lg:py-24 bg-white dark:bg-slate-900" aria-labelledby="testimonials-heading">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12 lg:mb-16">
+				<h2 id="testimonials-heading" class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 dark:text-slate-100 mb-4">
+					What Our Clients Say
+				</h2>
+				<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+					Real experiences from our satisfied clients
+				</p>
+			</div>
+
+			<!-- Testimonials Slider -->
+			<div class="relative max-w-4xl mx-auto">
+				<!-- Testimonials Container -->
+				<div
+					id="testimonials-container"
+					class="overflow-hidden rounded-2xl"
+				>
+					<div
+						id="testimonials-track"
+						class="flex transition-transform duration-500 ease-in-out"
+					>
+						{testimonials.map((testimonial, index) => (
+							<div
+								class="testimonial-slide min-w-full px-6 lg:px-12 py-8 lg:py-12"
+								data-index={index}
+							>
+								<blockquote class="bg-rose-50 dark:bg-slate-800 rounded-2xl p-8 lg:p-12 shadow-lg">
+									<!-- Rating Stars -->
+									<div class="flex items-center justify-center mb-6" aria-label={`${testimonial.rating} out of 5 stars`}>
+										{Array.from({ length: testimonial.rating }).map(() => (
+											<svg
+												class="w-6 h-6 text-rose-400 fill-current"
+												viewBox="0 0 24 24"
+												xmlns="http://www.w3.org/2000/svg"
+												aria-hidden="true"
+											>
+												<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+											</svg>
+										))}
+									</div>
+									<p class="text-lg lg:text-xl text-slate-700 dark:text-slate-300 mb-6 leading-relaxed italic">
+										"{testimonial.content}"
+									</p>
+									<footer class="flex items-center justify-center">
+										<div class="text-center">
+											<p class="font-semibold text-slate-900 dark:text-slate-100">
+												{testimonial.name}
+											</p>
+											<p class="text-sm text-rose-600 dark:text-rose-400">
+												{testimonial.role}
+											</p>
+										</div>
+									</footer>
+								</blockquote>
+							</div>
+						))}
+					</div>
+				</div>
+
+				<!-- Navigation Buttons -->
+				<button
+					id="testimonial-prev"
+					type="button"
+					class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg hover:bg-rose-50 dark:hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 z-10"
+					aria-label="Previous testimonial"
+				>
+					<svg
+						class="w-6 h-6 text-rose-600 dark:text-rose-400"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+					</svg>
+				</button>
+				<button
+					id="testimonial-next"
+					type="button"
+					class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg hover:bg-rose-50 dark:hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 z-10"
+					aria-label="Next testimonial"
+				>
+					<svg
+						class="w-6 h-6 text-rose-600 dark:text-rose-400"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+					</svg>
+				</button>
+
+				<!-- Dots Indicator -->
+				<div class="flex justify-center items-center space-x-2 mt-8" role="tablist" aria-label="Testimonial navigation">
+					{testimonials.map((_, index) => (
+						<button
+							type="button"
+							class={`testimonial-dot w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 ${
+								index === 0
+									? "bg-rose-600 dark:bg-rose-400 w-8"
+									: "bg-rose-300 dark:bg-rose-700 hover:bg-rose-400 dark:hover:bg-rose-600"
+							}`}
+							data-index={index}
+							aria-label={`Go to testimonial ${index + 1}`}
+							role="tab"
+							aria-selected={index === 0 ? "true" : "false"}
+						></button>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Banner Section -->
+	<section class="py-16 lg:py-24 bg-gradient-to-br from-rose-600 to-pink-600 dark:from-rose-800 dark:to-pink-800" aria-labelledby="cta-heading">
+		<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h2 id="cta-heading" class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+				Plan Your Dream Event With Us
+			</h2>
+			<p class="text-xl text-rose-50 mb-8 max-w-2xl mx-auto">
+				Let's create something extraordinary together. Get in touch and let's start planning your perfect event.
+			</p>
+			<a
+				href="/contact"
+				class="inline-block px-8 py-4 bg-white text-rose-600 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-rose-600"
+			>
+				Get Started Today
+			</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<script is:inline>
+	// Optimized Testimonials Slider
+	(function() {
+		'use strict';
+		const t = document.getElementById('testimonials-track');
+		const pb = document.getElementById('testimonial-prev');
+		const nb = document.getElementById('testimonial-next');
+		const d = document.querySelectorAll('.testimonial-dot');
+		const s = document.querySelectorAll('.testimonial-slide');
+		
+		if (!t || !pb || !nb || s.length === 0) return;
+
+		let idx = 0;
+		const total = s.length;
+		let interval = null;
+
+		const update = () => {
+			t.style.transform = `translateX(-${idx * 100}%)`;
+			d.forEach((dot, i) => {
+				const active = i === idx;
+				dot.setAttribute('aria-selected', active.toString());
+				dot.className = active 
+					? 'testimonial-dot w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 bg-rose-600 dark:bg-rose-400 w-8'
+					: 'testimonial-dot w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 bg-rose-300 dark:bg-rose-700 hover:bg-rose-400 dark:hover:bg-rose-600';
+			});
+		};
+
+		const goTo = (i) => {
+			idx = i < 0 ? total - 1 : i >= total ? 0 : i;
+			update();
+		};
+
+		const next = () => goTo(idx + 1);
+		const prev = () => goTo(idx - 1);
+
+		if (nb) nb.addEventListener('click', next);
+		if (pb) pb.addEventListener('click', prev);
+		d.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+		const start = () => interval = setInterval(next, 5000);
+		const stop = () => { if (interval) clearInterval(interval); interval = null; };
+
+		const c = document.getElementById('testimonials-container');
+		if (c) {
+			c.addEventListener('mouseenter', stop);
+			c.addEventListener('mouseleave', start);
+		}
+
+		start();
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') prev();
+			if (e.key === 'ArrowRight') next();
+		});
+	})();
+</script>
+
+<style>
+	/* Smooth transitions for testimonial slider */
+	#testimonials-track {
+		will-change: transform;
+	}
+
+	/* Ensure images don't break layout */
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Focus styles for better accessibility */
+	*:focus-visible {
+		outline: 2px solid rgb(251, 113, 133);
+		outline-offset: 2px;
+	}
+</style>
+
