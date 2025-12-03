@@ -3,6 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const services = [
 	{
 		title: "Wedding Planning",
@@ -26,27 +28,27 @@ const services = [
 
 const portfolioImages = [
 	{
-		src: "/assets/images/portfolio-1.svg",
+		src: `${baseUrl}assets/images/portfolio-1.svg`,
 		alt: "Elegant wedding ceremony with floral arrangements",
 	},
 	{
-		src: "/assets/images/portfolio-2.svg",
+		src: `${baseUrl}assets/images/portfolio-2.svg`,
 		alt: "Corporate conference event setup",
 	},
 	{
-		src: "/assets/images/portfolio-3.svg",
+		src: `${baseUrl}assets/images/portfolio-3.svg`,
 		alt: "Colorful birthday party celebration",
 	},
 	{
-		src: "/assets/images/portfolio-4.svg",
+		src: `${baseUrl}assets/images/portfolio-4.svg`,
 		alt: "Outdoor wedding reception with beautiful decorations",
 	},
 	{
-		src: "/assets/images/portfolio-5.svg",
+		src: `${baseUrl}assets/images/portfolio-5.svg`,
 		alt: "Professional corporate networking event",
 	},
 	{
-		src: "/assets/images/portfolio-6.svg",
+		src: `${baseUrl}assets/images/portfolio-6.svg`,
 		alt: "Themed birthday party with custom decorations",
 	},
 ];
@@ -82,16 +84,16 @@ const testimonials = [
 <BaseLayout
 	title="Premium Event Planning Services"
 	description="Brij Event Planner creates unforgettable moments with elegance and style. Expert wedding planning, corporate events, and birthday celebrations. Book your dream event today."
-	image="/assets/images/hero-bg.svg"
+	image={`${baseUrl}assets/images/hero-bg.svg`}
 	preloadHero={true}
-	heroImage="/assets/images/hero-bg.svg"
+	heroImage={`${baseUrl}assets/images/hero-bg.svg`}
 >
 	<!-- Hero Section -->
 	<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
 		<!-- Background Image -->
 		<div class="absolute inset-0 z-0">
 			<img
-				src="/assets/images/hero-bg.svg"
+				src={`${baseUrl}assets/images/hero-bg.svg`}
 				alt="Elegant event planning backdrop with beautiful decorations"
 				class="w-full h-full object-cover"
 				loading="eager"

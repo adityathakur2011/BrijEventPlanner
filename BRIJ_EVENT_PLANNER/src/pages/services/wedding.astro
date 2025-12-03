@@ -1,29 +1,31 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
 import BaseLayout from "../../layouts/BaseLayout.astro";
+const baseUrl = import.meta.env.BASE_URL;
 
 const galleryImages = [
 	{
-		src: "/assets/images/wedding-1.svg",
+		src: `${baseUrl}assets/images/wedding-1.svg",
 		alt: "Elegant wedding ceremony with beautiful floral arch",
 	},
 	{
-		src: "/assets/images/wedding-2.svg",
+		src: `${baseUrl}assets/images/wedding-2.svg",
 		alt: "Stunning wedding reception table setting",
 	},
 	{
-		src: "/assets/images/wedding-3.svg",
+		src: `${baseUrl}assets/images/wedding-3.svg",
 		alt: "Bridal party photoshoot in garden setting",
 	},
 	{
-		src: "/assets/images/wedding-4.svg",
+		src: `${baseUrl}assets/images/wedding-4.svg",
 		alt: "Romantic outdoor wedding ceremony",
 	},
 	{
-		src: "/assets/images/wedding-5.svg",
+		src: `${baseUrl}assets/images/wedding-5.svg",
 		alt: "Elegant wedding cake and dessert display",
 	},
 	{
-		src: "/assets/images/wedding-6.svg",
+		src: `${baseUrl}assets/images/wedding-6.svg",
 		alt: "Beautiful wedding venue with decorations",
 	},
 ];
@@ -62,11 +64,12 @@ const jsonLd = {
 	},
 };
 ---
+const baseUrl = import.meta.env.BASE_URL;
 
 <BaseLayout
 	title="Wedding Planning Services - Expert Wedding Coordination"
 	description="Professional wedding planning services for your perfect day. Comprehensive coordination including venue selection, vendor management, floral design, timeline creation, and day-of coordination. Make your dream wedding a reality."
-	image="/assets/images/wedding-1.svg"
+	image={`${baseUrl}assets/images/wedding-1.svg"
 >
 	<!-- JSON-LD Schema -->
 	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

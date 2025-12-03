@@ -1,4 +1,6 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL;
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Static Forms API Key - Replace with your actual API key from https://www.staticforms.xyz/
@@ -13,11 +15,12 @@ const WHATSAPP_MESSAGE = "Hello! I'm interested in your event planning services.
 // Google Maps embed placeholder - Replace with your actual location
 const GOOGLE_MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1841321915747!2d-73.98811768459398!3d40.75889597932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus";
 ---
+const baseUrl = import.meta.env.BASE_URL;
 
 <BaseLayout
 	title="Contact Us - Get in Touch for Your Event Planning Needs"
 	description="Contact Brij Event Planner for expert event planning services. Reach out via our contact form, WhatsApp, or visit our office. We're here to help make your event perfect."
-	image="/assets/images/contact-hero.svg"
+	image={`${baseUrl}assets/images/contact-hero.svg"
 >
 	<!-- Hero Section -->
 	<section class="relative py-16 lg:py-24 bg-gradient-to-br from-rose-100 to-pink-100 dark:from-slate-800 dark:to-slate-900">
