@@ -300,7 +300,7 @@ const testimonials = [
 				<button
 					id="testimonial-prev"
 					type="button"
-					class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg hover:bg-rose-50 dark:hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 z-10"
+					class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 min-w-[44px] min-h-[44px] p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg hover:bg-rose-50 dark:hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 z-10 flex items-center justify-center"
 					aria-label="Previous testimonial"
 				>
 					<svg
@@ -317,7 +317,7 @@ const testimonials = [
 				<button
 					id="testimonial-next"
 					type="button"
-					class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg hover:bg-rose-50 dark:hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 z-10"
+					class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 min-w-[44px] min-h-[44px] p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg hover:bg-rose-50 dark:hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-rose-400 focus:ring-offset-2 z-10 flex items-center justify-center"
 					aria-label="Next testimonial"
 				>
 					<svg
@@ -333,20 +333,22 @@ const testimonials = [
 				</button>
 
 				<!-- Dots Indicator -->
-				<div class="flex justify-center items-center space-x-2 mt-8" role="tablist" aria-label="Testimonial navigation">
+				<div class="flex justify-center items-center space-x-4 mt-8" role="tablist" aria-label="Testimonial navigation">
 					{testimonials.map((_, index) => (
 						<button
 							type="button"
-							class={`testimonial-dot w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 ${
+							class={`testimonial-dot min-w-[44px] min-h-[44px] rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 flex items-center justify-center ${
 								index === 0
-									? "bg-rose-600 dark:bg-rose-400 w-8"
+									? "bg-rose-600 dark:bg-rose-400"
 									: "bg-rose-300 dark:bg-rose-700 hover:bg-rose-400 dark:hover:bg-rose-600"
 							}`}
 							data-index={index}
 							aria-label={`Go to testimonial ${index + 1}`}
 							role="tab"
 							aria-selected={index === 0 ? "true" : "false"}
-						></button>
+						>
+							<span class={`rounded-full ${index === 0 ? "w-2 h-2 bg-white" : "w-3 h-3 bg-rose-600 dark:bg-rose-400"}`}></span>
+						</button>
 					))}
 				</div>
 			</div>
@@ -393,9 +395,15 @@ const testimonials = [
 			d.forEach((dot, i) => {
 				const active = i === idx;
 				dot.setAttribute('aria-selected', active.toString());
+				const innerSpan = dot.querySelector('span');
+				if (innerSpan) {
+					innerSpan.className = active 
+						? 'rounded-full w-2 h-2 bg-white'
+						: 'rounded-full w-3 h-3 bg-rose-600 dark:bg-rose-400';
+				}
 				dot.className = active 
-					? 'testimonial-dot w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 bg-rose-600 dark:bg-rose-400 w-8'
-					: 'testimonial-dot w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 bg-rose-300 dark:bg-rose-700 hover:bg-rose-400 dark:hover:bg-rose-600';
+					? 'testimonial-dot min-w-[44px] min-h-[44px] rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 bg-rose-600 dark:bg-rose-400 flex items-center justify-center'
+					: 'testimonial-dot min-w-[44px] min-h-[44px] rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 bg-rose-300 dark:bg-rose-700 hover:bg-rose-400 dark:hover:bg-rose-600 flex items-center justify-center';
 			});
 		};
 

@@ -121,7 +121,7 @@ const categories = [
 	<section class="py-16 lg:py-24 bg-white dark:bg-slate-900" aria-labelledby="portfolio-heading">
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 			<!-- Category Filters -->
-			<div class="flex flex-wrap justify-center gap-3 mb-12 lg:mb-16" role="tablist" aria-label="Portfolio category filters">
+			<div class="flex flex-wrap justify-center gap-4 mb-12 lg:mb-16" role="tablist" aria-label="Portfolio category filters">
 				{categories.map((category) => (
 					<button
 						type="button"
@@ -211,7 +211,7 @@ const categories = [
 		<button
 			id="lightbox-close"
 			type="button"
-			class="absolute top-4 right-4 p-2 text-white hover:text-rose-400 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded-lg"
+			class="absolute top-4 right-4 min-w-[44px] min-h-[44px] p-3 text-white hover:text-rose-400 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded-lg flex items-center justify-center"
 			aria-label="Close lightbox"
 		>
 			<svg
@@ -230,7 +230,7 @@ const categories = [
 		<button
 			id="lightbox-prev"
 			type="button"
-			class="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+			class="absolute left-4 top-1/2 -translate-y-1/2 min-w-[44px] min-h-[44px] p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-black flex items-center justify-center"
 			aria-label="Previous image"
 		>
 			<svg
@@ -249,7 +249,7 @@ const categories = [
 		<button
 			id="lightbox-next"
 			type="button"
-			class="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+			class="absolute right-4 top-1/2 -translate-y-1/2 min-w-[44px] min-h-[44px] p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-black flex items-center justify-center"
 			aria-label="Next image"
 		>
 			<svg
@@ -269,7 +269,7 @@ const categories = [
 			<img
 				id="lightbox-image"
 				src=""
-				alt=""
+				alt="Portfolio image"
 				class="max-w-full max-h-[90vh] mx-auto object-contain rounded-lg"
 			/>
 			<div class="text-center mt-4">
