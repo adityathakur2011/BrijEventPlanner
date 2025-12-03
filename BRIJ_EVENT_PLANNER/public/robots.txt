@@ -18,7 +18,7 @@ Allow: /*.png
 Allow: /*.svg
 
 # Sitemap location
-Sitemap: https://brijeventplanner.com/sitemap.xml
+Sitemap: https://adityathakur2011.github.io/BrijEventPlanner/sitemap.xml
 
 # Crawl delay (optional, adjust as needed)
 Crawl-delay: 1
