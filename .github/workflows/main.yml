@@ -20,13 +20,15 @@ jobs:
         with:
           node-version: 18
       - name: Install Dependencies
+        working-directory: ./BRIJ_EVENT_PLANNER
         run: npm install
       - name: Build Project
+        working-directory: ./BRIJ_EVENT_PLANNER
         run: npm run build
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: BRIJ_EVENT_PLANNER/dist
 
   deploy:
     needs: build
