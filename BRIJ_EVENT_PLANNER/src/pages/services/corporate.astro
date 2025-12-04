@@ -6,27 +6,27 @@ const basePath = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
 
 const galleryImages = [
 	{
-		src: `${baseUrl}/assets/images/corporate-1.svg`,
+		src: `/assets/images/corporate-1.svg`,
 		alt: "Professional corporate conference setup with stage and seating",
 	},
 	{
-		src: `${baseUrl}/assets/images/corporate-2.svg`,
+		src: `/assets/images/corporate-2.svg`,
 		alt: "Corporate networking event with elegant table settings",
 	},
 	{
-		src: `${baseUrl}/assets/images/corporate-3.svg`,
+		src: `/assets/images/corporate-3.svg`,
 		alt: "Product launch event with modern presentation area",
 	},
 	{
-		src: `${baseUrl}/assets/images/corporate-4.svg`,
+		src: `/assets/images/corporate-4.svg`,
 		alt: "Corporate team building activity setup",
 	},
 	{
-		src: `${baseUrl}/assets/images/corporate-5.svg`,
+		src: `/assets/images/corporate-5.svg`,
 		alt: "Corporate gala dinner with sophisticated decorations",
 	},
 	{
-		src: `${baseUrl}/assets/images/corporate-6.svg`,
+		src: `/assets/images/corporate-6.svg`,
 		alt: "Business seminar with professional AV equipment",
 	},
 ];
@@ -69,7 +69,7 @@ const jsonLd = {
 <BaseLayout
 	title="Corporate Event Planning Services - Professional Business Events"
 	description="Expert corporate event management for conferences, seminars, product launches, team building, and corporate galas. Professional coordination, vendor management, and seamless execution for your business events."
-	image={`${baseUrl}/assets/images/corporate-1.svg`}
+	image={`/assets/images/corporate-1.svg`}
 >
 	<!-- JSON-LD Schema -->
 	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
